@@ -35,7 +35,7 @@ public class Main {
 
     public static void addParking(){
         //Parking(String parkingName, String parkingCity, String parkingStreet, int numberOfParkingPlace);
-        
+
         System.out.println("Podaj nazwę parkingu: ");
         String parkingName=scanner.nextLine();
         System.out.println("Podaj miasto parkingu: ");
