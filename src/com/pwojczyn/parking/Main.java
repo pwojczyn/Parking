@@ -1,5 +1,11 @@
 package com.pwojczyn.parking;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -74,9 +80,7 @@ public class Main {
         String carName = scanner.nextLine();
         System.out.println("Podaj ID parkingu: ");
         int parkingID=Integer.parseInt(scanner.nextLine());
-        //Parking updateParking = parkingList.get(parkingID);
 
-        //System.out.println(parkingList.get(parkingID-1).toString());
         if (parkingList.get(parkingID-1).getParkedCar() < parkingList.get(parkingID-1).getNumberOfParkingPlace()){
             parkingList.get(parkingID-1).addCarToParking(carName);
             parkingList.get(parkingID-1).addParkedCar();
@@ -84,19 +88,39 @@ public class Main {
             System.out.println("Brak miejsc parkingowych, proszę spróbować na innym parkingu !!!");
 
 
-        //parkingList.get(2).setCarsList("kk"));
 
-        //System.out.println(parkingList.get(parkingID-1).toString());
+    }
+    public static void saveClass(){
+        try {
+                        // write object to file
+            FileOutputStream fos = new FileOutputStream("parkinglist.ser");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(parkingList);
+            oos.close();
 
-        //System.out.println(updateParking.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void loadClass(){
+        try {
+            // read object from file
+
+            FileInputStream fis = new FileInputStream("parkinglist.ser");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Parking parkingList = (Parking) ois.readObject();
+            ois.close();
 
 
-        //Cars newCar = new Cars(carName);
-
-        //parkingList.get(1).setCarsList(new Cars("Opel"));
-
-        //System.out.println(parkingList.get(1).getCarsList());
-
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
     public static void pressMenu() {
 
@@ -123,11 +147,13 @@ public class Main {
                 break;
             }
             case 8:{
-                System.out.println("Tu będzie metoda zapisująca dane do pliku.");
+                saveClass();
+                System.out.println("Zapisano klasę.");
                 break;
             }
             case 9:{
-                System.out.println("Tu będzie metoda odczytująca dane z pliku.");
+                loadClass();
+                System.out.println("Odczytano klasę.");
                 break;
             }
 
