@@ -4,12 +4,12 @@ Parking - program do gromadzenia danych o samochodach na parkingu.
 GitHub: https://github.com/pwojczyn/Parking
 
 Wygląd menu:
-1 - Dodaj parking.
-2 - Dodaj samochód do parkingu.
-3 - Wyświetl listę z parkingami.
-7 - Wygeneruj losowe dane w programie.
+1) - Dodaj parking.
+2) - Dodaj samochód do parkingu.
+3) - Wyświetl listę z parkingami.
+7) - Wygeneruj losowe dane w programie.
 -----------------------
-0 - Wyjście
+0) - Wyjście
 
 
 TODO:
