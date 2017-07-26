@@ -1,11 +1,5 @@
 package com.pwojczyn.parking;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,15 +15,13 @@ public class Main {
         System.out.println("Parking - program do gromadzenia danych o samochodach na parkingu.");
         System.out.println("");
         System.out.println("Wybierz opcję:");
-        System.out.println("1 - Dodaj parking.");
-        System.out.println("2 - Dodaj samochód do parkingu.");
-        System.out.println("3 - Wyświetl listę z parkingami.");
+        System.out.println("1) - Dodaj parking.");
+        System.out.println("2) - Dodaj samochód do parkingu.");
+        System.out.println("3) - Wyświetl listę z parkingami.");
 
-        System.out.println("7 - Wygeneruj losowe dane w programie.");
-        System.out.println("8 - Zapisz dane do pliku.");
-        System.out.println("9 - Odczytaj dane z pliku.");
+        System.out.println("7) - Wygeneruj losowe dane w programie.");
         System.out.println("-----------------------");
-        System.out.println("0 - Wyjście");
+        System.out.println("0) - Wyjście");
 
      }
 
@@ -91,42 +83,7 @@ public class Main {
 
 
     }
-    public static void saveClass(){
-        try {
-                        // write object to file
-            FileOutputStream fos = new FileOutputStream("parkinglist.ser");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            for (Parking parking : parkingList) {
-                oos.writeObject(parking);
-            }
 
-            oos.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public static void loadClass(){
-        try {
-            // read object from file
-
-            FileInputStream fis = new FileInputStream("parkinglist.ser");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            Parking fileParkingList = (Parking) ois.readObject();
-            System.out.println(ois.readObject().toString());
-            ois.close();
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
     public static void pressMenu() {
 
         switch (choice) {
@@ -149,16 +106,6 @@ public class Main {
                 System.out.println("Generowanie przykładowej listy parkingów.");
                 exampleParking();
                 printMenu();
-                break;
-            }
-            case 8:{
-                saveClass();
-                System.out.println("Zapisano klasę.");
-                break;
-            }
-            case 9:{
-                loadClass();
-                System.out.println("Odczytano klasę.");
                 break;
             }
 
