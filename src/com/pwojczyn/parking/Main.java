@@ -96,7 +96,10 @@ public class Main {
                         // write object to file
             FileOutputStream fos = new FileOutputStream("parkinglist.ser");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(parkingList);
+            for (Parking parking : parkingList) {
+                oos.writeObject(parking);
+            }
+
             oos.close();
 
         } catch (FileNotFoundException e) {
@@ -111,7 +114,8 @@ public class Main {
 
             FileInputStream fis = new FileInputStream("parkinglist.ser");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            Parking parkingList = (Parking) ois.readObject();
+            Parking fileParkingList = (Parking) ois.readObject();
+            System.out.println(ois.readObject().toString());
             ois.close();
 
 
