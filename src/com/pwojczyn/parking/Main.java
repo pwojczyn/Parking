@@ -20,10 +20,11 @@ public class Main {
         System.out.println("3) - Wyświetl listę z parkingami.");
 
         System.out.println("7) - Wygeneruj losowe dane w programie.");
+        System.out.println("8) - Statystki parkingów.");
         System.out.println("-----------------------");
         System.out.println("0) - Wyjście");
 
-     }
+    }
 
     public static void addParking(){
         //Parking(String parkingName, String parkingCity, String parkingStreet, int numberOfParkingPlace);
@@ -80,8 +81,18 @@ public class Main {
         }else
             System.out.println("Brak miejsc parkingowych, proszę spróbować na innym parkingu !!!");
 
-
-
+    }
+    public static void parkingStats(){
+        int allParkingPlace = 0;
+        int allParkedCars = 0;
+        for (Parking parking : parkingList) {
+            allParkingPlace +=  parking.getNumberOfParkingPlace();
+            allParkedCars+= parking.getParkedCar();
+        }
+        System.out.println("Statytski parkingów:");
+        System.out.println("Wszystkich miejsc parkingowych: "+allParkingPlace);
+        System.out.println("Zaparkowane samochody: "+allParkedCars);
+        System.out.println("Wolne miejsca parkingowe: "+(allParkingPlace-allParkedCars) );
     }
 
     public static void pressMenu() {
@@ -105,6 +116,11 @@ public class Main {
             case 7:{
                 System.out.println("Generowanie przykładowej listy parkingów.");
                 exampleParking();
+                printMenu();
+                break;
+            }
+            case 8:{
+                parkingStats();
                 printMenu();
                 break;
             }
