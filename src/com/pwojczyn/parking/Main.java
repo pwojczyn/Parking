@@ -18,6 +18,7 @@ public class Main {
         System.out.println("1) - Dodaj parking.");
         System.out.println("2) - Dodaj samochód do parkingu.");
         System.out.println("3) - Wyświetl listę z parkingami.");
+        System.out.println("4) - Usuniecie samochodu z parkingu.");
 
         System.out.println("7) - Wygeneruj losowe dane w programie.");
         System.out.println("8) - Statystki parkingów.");
@@ -78,8 +79,11 @@ public class Main {
         if (parkingList.get(parkingID-1).getParkedCar() < parkingList.get(parkingID-1).getNumberOfParkingPlace()){
             parkingList.get(parkingID-1).addCarToParking(carName);
             parkingList.get(parkingID-1).addParkedCar();
-        }else
+        }else {
+            System.out.println("-----------------------");
             System.out.println("Brak miejsc parkingowych, proszę spróbować na innym parkingu !!!");
+            System.out.println("-----------------------");
+        }
 
     }
     public static void parkingStats(){
@@ -90,10 +94,21 @@ public class Main {
             allParkedCars+= parking.getParkedCar();
         }
         System.out.println("Statytski parkingów:");
+        System.out.println("-----------------------");
         System.out.println("Wszystkich miejsc parkingowych: "+allParkingPlace);
         System.out.println("Zaparkowane samochody: "+allParkedCars);
         System.out.println("Wolne miejsca parkingowe: "+(allParkingPlace-allParkedCars) );
+        System.out.println("-----------------------");
     }
+    public static void removeCar(){
+        System.out.println("Usuwanie samochodu z parkingu:");
+        System.out.println("Podaj nazwę samochodu: ");
+        String carName = scanner.nextLine();
+        System.out.println("Podaj ID parkingu: ");
+        int parkingID=Integer.parseInt(scanner.nextLine());
+        parkingList.get(parkingID-1).removeCar(carName);
+    }
+
 
     public static void pressMenu() {
 
@@ -110,6 +125,11 @@ public class Main {
             }
             case 3:{
                 showParkingList();
+                printMenu();
+                break;
+            }
+            case 4:{
+                removeCar();
                 printMenu();
                 break;
             }
@@ -132,7 +152,9 @@ public class Main {
                 break;
             }
             default: {
+                System.out.println("-----------------------");
                 System.out.println("Nie znam tej komendy!");
+                System.out.println("-----------------------");
             }
         }
     }

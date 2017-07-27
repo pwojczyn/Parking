@@ -103,17 +103,41 @@ public class Parking {
     public void setCarsList(ArrayList<Cars> carsList) {
         //this.carsList.add(new ArrayList<Cars>(carsList));
     }
-    public void addCarToParking(String carName){
+
+    public void addCarToParking(String carName) {
         this.carsList.add(new Cars(carName));
     }
-    public void addParkedCar(){
-        if (this.parkedCar <= this.numberOfParkingPlace){
+
+    public void addParkedCar() {
+        if (this.parkedCar <= this.numberOfParkingPlace) {
             this.parkedCar++;
-        }else
+        } else
             System.out.println("Parking jest pełen !!!");
 
 
     }
+
+    public boolean removeCar(String carName) {
+        //System.out.println("carName"+carName);
+        for (Cars cars : carsList) {
+
+            if (cars.getCarName().equals(carName)){
+                System.out.println("Usunieto samochód "+cars.getCarName());
+
+                carsList.remove(cars);
+
+                return true;
+            }else{
+                System.out.println("Nie ma "+cars.getCarName()+" takiego samochodu");
+            }
+
+        }
+
+        return false;
+
+    }
+
+
 
     @Override
     public String toString() {

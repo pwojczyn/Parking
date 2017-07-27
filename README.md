@@ -16,7 +16,3 @@ Wygląd menu:
 
 
 
-TODO:
-- opcja usuwania samochodów z parkingu;
-
-
