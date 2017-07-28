@@ -14,5 +14,10 @@ Wygląd menu:
 -----------------------
 0) - Wyjście
 
+-------------------------------------------------------------------
+Changelog:
+1.16:   rezygnacja z metod i zmiennych static w klasie Main();
+        nowa klasa Menu;
+        
 
 
